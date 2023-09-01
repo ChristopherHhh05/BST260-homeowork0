@@ -18,7 +18,7 @@ and print out the solutions to $f(x) = ax^2+bx+c=0$. Do not report complex solut
 (@) Create an HTML page with the results for this last set of values, but this time showing the code. 
 
 # Solution
-*(a)* The code applies the formula, $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$, to solve for the quadratic equation provided.
+*(a)* The code first calculates the discriminant ($D=b^2-4ac$) of the quadratic formula. If the discriminant is greater or equal to 0, then the code applies the formula, $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$, to solve for the quadratic equation provided.If the discriminant is smaller than 0, it prompts to user that the equation does not have solutions.
 ```{r}
 # Define variables
 a <- 1
@@ -26,10 +26,16 @@ b <- 3
 c <- 2
 
 # Solve for quadratic equation
-delta <- sqrt(b^2-4*a*c)
-dummy <- c(1, -1)
-x <- (-b+dummy*delta)/(2*a)
-cat("The solution to the quadratic equation is ", x, ".\n")
+D <- b^2-4*a*c
+
+# if discriminant is greater or equal to 0
+if (D>=0){
+  dummy <- c(1, -1)
+  x <- (-b+dummy*sqrt(D))/(2*a)
+  cat("The solution to the quadratic equation is ", x, ".\n")
+} else { # if discriminant is smaller than 0
+  print("The quadratic equation does not have solutions.")
+}
 ```
 
 
