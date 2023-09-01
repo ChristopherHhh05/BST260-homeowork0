@@ -1,0 +1,43 @@
+---
+title: "homework0"
+format: html
+editor: visual
+execute: 
+  echo: false
+---
+
+# Question
+
+(@) Write a Quarto document that defines variables $a=1, b=-1, c=-2$
+and print out the solutions to $f(x) = ax^2+bx+c=0$. Do not report complex solutions, only real numbers. 
+
+(@) Include a graph of $f(x)$ versus $x$ for $x \in (-5,5)$.
+
+(@) Erase the PDF report and reproduce it but this time using $a=1, b=3, c=2$. 
+
+(@) Create an HTML page with the results for this last set of values, but this time showing the code. 
+
+# Solution
+*(a)* The code applies the formula, $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$, to solve for the quadratic equation provided.
+```{r}
+# Define variables
+a <- 1
+b <- 3
+c <- 2
+
+# Solve for quadratic equation
+delta <- sqrt(b^2-4*a*c)
+dummy <- c(1, -1)
+x <- (-b+dummy*delta)/(2*a)
+cat("The solution to the quadratic equation is ", x, ".\n")
+```
+
+
+*(b)* The following graph plots the function $f(x) = ax^2+bx+c=0$ for $x \in (-5,5)$, provided the $a, b,c$ values above.
+```{r}
+# Plot the function
+xi <- seq(-5, 5, length = 300)
+plot(xi, a*xi^2 + b*xi + c, type = "l", xlab = "x", ylab = "f(x)")
+abline(h = 0, lty = 2)
+
+``` 
